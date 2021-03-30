@@ -36,11 +36,22 @@ Install the k8spin along with its dependencies into kubernetes cluster
 Verify the installation
 
 ```
-$ kubectl get po -l control-plane=controller-manager -n kbcnat-system
-NAMESPACE            NAME                                         READY   STATUS    RESTARTS   AGE
-kbcnat-system        kbcnat-controller-manager-594967764c-d59vr   2/2     Running   0          13s
-
-$ kubectl logs -l control-plane=controller-manager -n kbcnat-system -c manager -f
+$ kubectl get po --all-namespaces
+NAMESPACE            NAME                                                READY   STATUS    RESTARTS   AGE
+cert-manager         cert-manager-85f9bbcd97-zhmsf                       1/1     Running   0          72m
+cert-manager         cert-manager-cainjector-74459fcc56-5nfrz            1/1     Running   0          72m
+cert-manager         cert-manager-webhook-57d97ccc67-8w4sn               1/1     Running   0          72m
+default              k8spin-operator-7cb987c59f-6hsw8                    1/1     Running   0          70m
+default              k8spin-webhook-5dccf9b645-vcln2                     1/1     Running   0          70m
+kube-system          calico-kube-controllers-69496d8b75-xfqxk            1/1     Running   0          87m
+kube-system          calico-node-mt6jq                                   1/1     Running   0          87m
+kube-system          coredns-f9fd979d6-hn8gx                             1/1     Running   0          87m
+kube-system          etcd-k8spin-demo-control-plane                      1/1     Running   0          87m
+kube-system          kube-apiserver-k8spin-demo-control-plane            1/1     Running   0          87m
+kube-system          kube-controller-manager-k8spin-demo-control-plane   1/1     Running   0          87m
+kube-system          kube-proxy-x46t8                                    1/1     Running   0          87m
+kube-system          kube-scheduler-k8spin-demo-control-plane            1/1     Running   0          87m
+local-path-storage   local-path-provisioner-78776bfc44-lnq2m             1/1     Running   0          87m
 ```
 
 ## Test the k8spin operator multi-tenant capabilities
